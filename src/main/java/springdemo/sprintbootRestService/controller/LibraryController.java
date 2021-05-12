@@ -1,5 +1,7 @@
 package springdemo.sprintbootRestService.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,8 @@ public class LibraryController {
     @Autowired
     LibraryService libraryService;
 
+   private static final Logger logger=LoggerFactory.getLogger(LibraryController.class);
+
     //Post book to library
     //Define HTTPs method, create path and map your implementation to the library class
     @PostMapping("/addBook")
@@ -28,6 +32,7 @@ public class LibraryController {
 
         AddResponse ad = new AddResponse();
         if (!libraryService.checkBookAlreadyExist(id)) {
+            logger.info("Book do not exist so creating one");
 
             //fetch id.
             library.setId(id);
@@ -51,6 +56,7 @@ public class LibraryController {
         }
         //
         else {
+            logger.info("Book exists, skipping creation");
             ad.setMessage("Book already exists");
             ad.setBookid(id);
 
@@ -113,6 +119,7 @@ public class LibraryController {
 
         //delete
         repository.delete((libdelete));
+        logger.info("Book is deleted");
 
         //return response book is deleted with 201 status
         return new ResponseEntity<>("Book is deleted", HttpStatus.CREATED);

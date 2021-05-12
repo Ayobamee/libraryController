@@ -19,16 +19,6 @@ public class SpringbootRestServiceApplication {
 
 	//Getting data from data base and mapping into the column in the libraray class
 
-	/*
-	@Override
-	public void run(String[]args)
-	{
 
-		Library lib= repository.findById("fdsefr3").get();
-		//Display the value of author in the database.
-		System.out.println(lib.getAuthor());
-
-	}
-	*/
 
 }
