@@ -34,7 +34,7 @@ public class LibraryController {
         if (!libraryService.checkBookAlreadyExist(id)) {
             logger.info("Book do not exist so creating one");
 
-            //fetch id.
+            //sets an id.
             library.setId(id);
 
             //jpa repository-save to post request to the database

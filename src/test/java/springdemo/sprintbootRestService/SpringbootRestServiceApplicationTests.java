@@ -31,7 +31,6 @@ class SpringbootRestServiceApplicationTests {
 	@Test
 	public void addBookTest()
 
-
 	{
 		Library lib =buildLibrary();
 		//passing data from library into mocked library service (for passing data).
@@ -41,7 +40,7 @@ class SpringbootRestServiceApplicationTests {
 		when(libraryService.checkBookAlreadyExist(lib.getId())).thenReturn(false);
 
 
-		//calling implementation of the response entitiy
+		//calling implementation of the response entity
 		ResponseEntity response = con.addBookImplementation(buildLibrary());
 		System.out.println(response.getStatusCode());
 		assertEquals(response.getStatusCode(), HttpStatus.CREATED);
